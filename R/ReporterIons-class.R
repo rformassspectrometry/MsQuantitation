@@ -58,6 +58,8 @@
 ##' mz(TMT10)
 ##'
 ##' width(TMT10)
+##'
+##' as(TMT10, "DataFrame")
 NULL
 
 
@@ -224,3 +226,15 @@ setMethod("description", "ReporterIons",
 ##' @exportMethod names
 setMethod("names", "ReporterIons",
           function(x) x@name)
+
+##' @importFrom  S4Vectors DataFrame
+##'
+##' @importFrom methods setAs
+##'
+##' @export
+setAs("ReporterIons", "DataFrame",
+      function(from)
+          DataFrame(name = names(from),
+                    reporterName = reporterNames(from),
+                    mz = mz(from),
+                    width = width(from)))

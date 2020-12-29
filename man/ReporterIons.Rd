@@ -186,6 +186,8 @@ names(TMT10)
 mz(TMT10)
 
 width(TMT10)
+
+as(TMT10, "DataFrame")
 }
 \references{
 Ross PL, Huang YN, Marchese JN, Williamson B, Parker K, Hattan S,

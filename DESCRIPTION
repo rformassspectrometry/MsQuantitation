@@ -14,7 +14,8 @@ Depends:
 Imports:
   methods,
   BiocGenerics,
-  Biobase
+  Biobase,
+  S4Vectors
 Suggests:
    knitr
 License: Artistic-2.0
