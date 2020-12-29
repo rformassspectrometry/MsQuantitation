@@ -1,6 +1,6 @@
-##' @export
-##'
-##' @rdname ReporterIons
+#' @export
+#'
+#' @rdname ReporterIons
 iTRAQ4 <- ReporterIons(
     description = "4-plex iTRAQ",
     name = "iTRAQ4",
@@ -9,9 +9,9 @@ iTRAQ4 <- ReporterIons(
     mz = c(114.1112, 115.1083, 116.1116, 117.1150),
     width = 0.05)
 
-##' @export
-##'
-##' @rdname ReporterIons
+#' @export
+#'
+#' @rdname ReporterIons
 iTRAQ5 <- ReporterIons(
     description = "4-plex iTRAQ and reporter + balance group",
     name = "iTRAQ5",
@@ -21,9 +21,9 @@ iTRAQ5 <- ReporterIons(
     mz = c(114.1112, 115.1083, 116.1116, 117.1150, 145.1),
     width = 0.05)
 
-##' @export
-##'
-##' @rdname ReporterIons
+#' @export
+#'
+#' @rdname ReporterIons
 iTRAQ8 <- ReporterIons(
     description = "8-plex iTRAQ",
     name = "iTRAQ8",
@@ -35,9 +35,9 @@ iTRAQ8 <- ReporterIons(
            117.11497, 118.11201, 119.1153, 121.1220),
     width = 0.05)
 
-##' @export
-##'
-##' @rdname ReporterIons
+#' @export
+#'
+#' @rdname ReporterIons
 iTRAQ9 <- ReporterIons(
     description = "8-plex iTRAQ and reporter + balance group",
     name = "iTRAQ9",
@@ -51,9 +51,9 @@ iTRAQ9 <- ReporterIons(
     width = 0.05)
 
 
-##' @export
-##'
-##' @rdname ReporterIons
+#' @export
+#'
+#' @rdname ReporterIons
 TMT10HCD <- ReporterIons(
     description = "10-plex TMT HCD",
     name = "TMT10HCD",
@@ -71,14 +71,14 @@ TMT10HCD <- ReporterIons(
            131.138176), ## 131
     width = 0.002)
 
-##' @export
-##'
-##' @rdname ReporterIons
+#' @export
+#'
+#' @rdname ReporterIons
 TMT10 <- TMT10HCD
 
-##' @export
-##'
-##' @rdname ReporterIons
+#' @export
+#'
+#' @rdname ReporterIons
 TMT10ETD <- ReporterIons(
     description = "10-plex TMT ETD",
     name = "TMT10ETD",
@@ -98,9 +98,9 @@ TMT10ETD <- ReporterIons(
         119.138176), ## 131
     width = 0.002)
 
-##' @export
-##'
-##' @rdname ReporterIons
+#' @export
+#'
+#' @rdname ReporterIons
 TMT11HCD <- ReporterIons(
     description = "11-plex TMT HCD",
     name = "TMT11HCD",
@@ -120,14 +120,14 @@ TMT11HCD <- ReporterIons(
            131.144499), ## 131C
     width = 0.002)
 
-##' @export
-##'
-##' @rdname ReporterIons
+#' @export
+#'
+#' @rdname ReporterIons
 TMT11 <- TMT11HCD
 
-##' @export
-##'
-##' @rdname ReporterIons
+#' @export
+#'
+#' @rdname ReporterIons
 TMT16HCD <- ReporterIons(
     description = "16-plex TMT HCD",
     name = "TMT16HCD",
@@ -154,14 +154,14 @@ TMT16HCD <- ReporterIons(
            134.148245), ## 134N
     width = 0.002)
 
-##' @export
-##'
-##' @rdname ReporterIons
+#' @export
+#'
+#' @rdname ReporterIons
 TMT16 <- TMT16HCD
 
-##' @export
-##'
-##' @rdname ReporterIons
+#' @export
+#'
+#' @rdname ReporterIons
 TMT6 <- ReporterIons(
     description = "6-plex TMT tags",
     name = "TMT6",
@@ -171,9 +171,9 @@ TMT6 <- ReporterIons(
            130.141141, 131.138176),
     width = 0.05)
 
-##' @export
-##'
-##' @rdname ReporterIons
+#' @export
+#'
+#' @rdname ReporterIons
 TMT6b <- ReporterIons(
     description = "6-plex TMT tags",
     name = "TMT6",
@@ -183,9 +183,9 @@ TMT6b <- ReporterIons(
            130.141141, 131.138176),
     width = 0.05)
 
-##' @export
-##'
-##' @rdname ReporterIons
+#' @export
+#'
+#' @rdname ReporterIons
 TMT7 <- ReporterIons(
     description = "6-plex TMT tags and reporter + balance group",
     name = "TMT7", reporterNames = c("TMT7.126", "TMT7.127",
@@ -196,9 +196,9 @@ TMT7 <- ReporterIons(
            130.141141, 131.138176, 230.17),
     width = 0.05)
 
-##' @export
-##'
-##' @rdname ReporterIons
+#' @export
+#'
+#' @rdname ReporterIons
 TMT7b <- ReporterIons(
     description = "6-plex TMT tags and reporter + balance group",
     name = "TMT7", reporterNames = c("TMT7.126", "TMT7.127",
