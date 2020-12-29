@@ -11,7 +11,6 @@
 \alias{width,ReporterIons-method}
 \alias{reporterNames}
 \alias{reporterNames<-}
-\alias{description,ReporterIons-method}
 \alias{names,ReporterIons-method}
 \alias{iTRAQ4}
 \alias{iTRAQ5}
@@ -61,7 +60,7 @@ An object of class \code{ReporterIons} of length 7.
 An object of class \code{ReporterIons} of length 7.
 }
 \usage{
-ReporterIons(name, reporterNames, description = "", mz, width)
+ReporterIons(name, reporterNames, mz, width)
 
 \S4method{show}{ReporterIons}(object)
 
@@ -76,8 +75,6 @@ ReporterIons(name, reporterNames, description = "", mz, width)
 reporterNames(x)
 
 reporterNames(x) <- value
-
-\S4method{description}{ReporterIons}(object)
 
 \S4method{names}{ReporterIons}(x)
 
@@ -116,9 +113,6 @@ TMT7b
 
 \item{reporterNames}{Parameter to set the \code{reporterNames} slot.}
 
-\item{description}{Parameter to set the \code{description}
-slot. Default is \code{""}.}
-
 \item{mz}{Parameter to set the \code{mz} slot.}
 
 \item{width}{Parameter to set the \code{width} slot.}
@@ -152,9 +146,6 @@ instances can be created with the \code{ReporterIons()} function.
 \item{\code{reporterNames}}{\code{character()} of length equal to the number of
 reporter ions in the instance. Used to uniquely name each ion.}
 
-\item{\code{description}}{\code{character(1)} with a free-text description of
-the instance. Default is an empty character.}
-
 \item{\code{mz}}{\code{numeric()} with the reporter ions' m/z values.}
 
 \item{\code{width}}{\code{numeric(1)} defining the region where the reporter
@@ -165,8 +156,7 @@ ion can be expected. This region is calculated as \code{mz} +/-
 \examples{
 
 ## Manual construction of a ReporterIons instance:
-ReporterIons(description = "4-plex iTRAQ",
-             name = "iTRAQ4",
+ReporterIons(name = "iTRAQ4",
              reporterNames = c("iTRAQ4.114", "iTRAQ4.115",
                                "iTRAQ4.116", "iTRAQ4.117"),
              mz = c(114.1, 115.1, 116.1, 117.1),

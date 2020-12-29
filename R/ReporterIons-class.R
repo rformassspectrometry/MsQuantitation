@@ -37,8 +37,7 @@
 #' @examples
 #'
 #' ## Manual construction of a ReporterIons instance:
-#' ReporterIons(description = "4-plex iTRAQ",
-#'              name = "iTRAQ4",
+#' ReporterIons(name = "iTRAQ4",
 #'              reporterNames = c("iTRAQ4.114", "iTRAQ4.115",
 #'                                "iTRAQ4.116", "iTRAQ4.117"),
 #'              mz = c(114.1, 115.1, 116.1, 117.1),
@@ -68,9 +67,6 @@ NULL
 #' @slot reporterNames `character()` of length equal to the number of
 #'     reporter ions in the instance. Used to uniquely name each ion.
 #'
-#' @slot description `character(1)` with a free-text description of
-#'     the instance. Default is an empty character.
-#'
 #' @slot mz `numeric()` with the reporter ions' m/z values.
 #'
 #' @slot width `numeric(1)` defining the region where the reporter
@@ -84,7 +80,6 @@ setClass("ReporterIons",
          slots = c(
              name = "character",
              reporterNames = "character",
-             description = "character",
              mz = "numeric",
              width = "numeric"))
 
@@ -96,14 +91,10 @@ setClass("ReporterIons",
 #'
 #' @param reporterNames Parameter to set the `reporterNames` slot.
 #'
-#' @param description Parameter to set the `description`
-#'     slot. Default is `""`.
-#'
 #' @param mz Parameter to set the `mz` slot.
 #'
 #' @param width Parameter to set the `width` slot.
 ReporterIons <- function(name, reporterNames,
-                         description = "",
                          mz, width) {    
     if (length(mz) != length(reporterNames))
         stop("Length 'mz' and 'reporterNames' must be identical.")
@@ -118,7 +109,6 @@ ReporterIons <- function(name, reporterNames,
     new("ReporterIons",
         name = name,
         reporterNames = reporterNames,
-        description = description,
         mz = mz,
         width = width)
 }
@@ -131,8 +121,7 @@ ReporterIons <- function(name, reporterNames,
 setMethod("show", "ReporterIons",
           function(object) {
               cat("Object of class \"", class(object), "\"\n",sep = "")
-              cat(object@name, ": '",
-                  object@description,
+              cat(object@name, 
                   "' with ", length(object@mz),
                   " reporter ions\n", sep = "")
               if (length(object@mz)) {
@@ -162,7 +151,6 @@ setMethod("[", "ReporterIons",
                   stop("subscript out of bonds")
               new("ReporterIons",
                   name = paste0(x@name, "[", paste(i, collapse = ":"), "]"),
-                  description = paste0("subset of ", x@description),
                   reporterNames = x@reporterNames[i],
                   mz = x@mz[i],
                   width = x@width)
@@ -211,15 +199,6 @@ reporterNames <- function(x) {
     if (validObject(x)) x
 }
 
-        
-
-#' @exportMethod description
-#'
-#' @rdname ReporterIons
-#'
-#' @importFrom Biobase description
-setMethod("description", "ReporterIons",
-          function(object) object@description)
 
 #' @rdname ReporterIons
 #'

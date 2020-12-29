@@ -2,7 +2,6 @@
 #'
 #' @rdname ReporterIons
 iTRAQ4 <- ReporterIons(
-    description = "4-plex iTRAQ",
     name = "iTRAQ4",
     reporterNames = c("iTRAQ4.114", "iTRAQ4.115",
                       "iTRAQ4.116", "iTRAQ4.117"),
@@ -13,7 +12,6 @@ iTRAQ4 <- ReporterIons(
 #'
 #' @rdname ReporterIons
 iTRAQ5 <- ReporterIons(
-    description = "4-plex iTRAQ and reporter + balance group",
     name = "iTRAQ5",
     reporterNames = c("iTRAQ5.114", "iTRAQ5.115",
                       "iTRAQ5.116", "iTRAQ5.117",
@@ -25,7 +23,6 @@ iTRAQ5 <- ReporterIons(
 #'
 #' @rdname ReporterIons
 iTRAQ8 <- ReporterIons(
-    description = "8-plex iTRAQ",
     name = "iTRAQ8",
     reporterNames = c("iTRAQ8.113", "iTRAQ8.114",
                       "iTRAQ8.115", "iTRAQ8.116",
@@ -39,7 +36,6 @@ iTRAQ8 <- ReporterIons(
 #'
 #' @rdname ReporterIons
 iTRAQ9 <- ReporterIons(
-    description = "8-plex iTRAQ and reporter + balance group",
     name = "iTRAQ9",
     reporterNames = c("iTRAQ9.113", "iTRAQ9.114",
                       "iTRAQ9.115", "iTRAQ9.116",
@@ -55,7 +51,6 @@ iTRAQ9 <- ReporterIons(
 #'
 #' @rdname ReporterIons
 TMT10HCD <- ReporterIons(
-    description = "10-plex TMT HCD",
     name = "TMT10HCD",
     reporterNames = c("126", "127N", "127C", "128N", "128C",
                       "129N", "129C", "130N", "130C", "131"),
@@ -80,7 +75,6 @@ TMT10 <- TMT10HCD
 #'
 #' @rdname ReporterIons
 TMT10ETD <- ReporterIons(
-    description = "10-plex TMT ETD",
     name = "TMT10ETD",
     reporterNames = c("126", "127N", "127C", "128N",
                       "128C", "129N", "129C", "130N",
@@ -102,7 +96,6 @@ TMT10ETD <- ReporterIons(
 #'
 #' @rdname ReporterIons
 TMT11HCD <- ReporterIons(
-    description = "11-plex TMT HCD",
     name = "TMT11HCD",
     reporterNames = c("126", "127N", "127C", "128N", "128C",
                       "129N", "129C", "130N", "130C", "131N",
@@ -129,7 +122,6 @@ TMT11 <- TMT11HCD
 #'
 #' @rdname ReporterIons
 TMT16HCD <- ReporterIons(
-    description = "16-plex TMT HCD",
     name = "TMT16HCD",
     reporterNames = c("126", "127N",
                       "127C", "128N", "128C", "129N",
@@ -163,7 +155,6 @@ TMT16 <- TMT16HCD
 #'
 #' @rdname ReporterIons
 TMT6 <- ReporterIons(
-    description = "6-plex TMT tags",
     name = "TMT6",
     reporterNames = c("TMT6.126", "TMT6.127", "TMT6.128",
                       "TMT6.129", "TMT6.130", "TMT6.131"),
@@ -175,7 +166,6 @@ TMT6 <- ReporterIons(
 #'
 #' @rdname ReporterIons
 TMT6b <- ReporterIons(
-    description = "6-plex TMT tags",
     name = "TMT6",
     reporterNames = c("TMT6.126", "TMT6.127", "TMT6.128",
                       "TMT6.129", "TMT6.130", "TMT6.131"),
@@ -187,24 +177,34 @@ TMT6b <- ReporterIons(
 #'
 #' @rdname ReporterIons
 TMT7 <- ReporterIons(
-    description = "6-plex TMT tags and reporter + balance group",
-    name = "TMT7", reporterNames = c("TMT7.126", "TMT7.127",
-                                     "TMT7.128", "TMT7.129",
-                                     "TMT7.130", "TMT7.131",
-                                     "TMT7.230"),
-    mz = c(126.127725, 127.131079, 128.134433, 129.137787,
-           130.141141, 131.138176, 230.17),
+    name = "TMT7",
+    reporterNames = c("TMT7.126", "TMT7.127",
+                      "TMT7.128", "TMT7.129",
+                      "TMT7.130", "TMT7.131",
+                      "TMT7.230"),
+    mz = c(126.127725,
+           127.131079,
+           128.134433,
+           129.137787,
+           130.141141,
+           131.138176,
+           230.17),
     width = 0.05)
 
 #' @export
 #'
 #' @rdname ReporterIons
 TMT7b <- ReporterIons(
-    description = "6-plex TMT tags and reporter + balance group",
-    name = "TMT7", reporterNames = c("TMT7.126", "TMT7.127",
-                                     "TMT7.128", "TMT7.129",
-                                     "TMT7.130", "TMT7.131",
-                                     "TMT7.230"),
-    mz = c(126.127725, 127.124760, 128.134433, 129.131468,
-           130.141141, 131.138176, 230.17),
+    name = "TMT7",
+    reporterNames = c("TMT7.126", "TMT7.127",
+                      "TMT7.128", "TMT7.129",
+                      "TMT7.130", "TMT7.131",
+                      "TMT7.230"),
+    mz = c(126.127725,
+           127.124760,
+           128.134433,
+           129.131468,
+           130.141141,
+           131.138176,
+           230.17),
     width = 0.05)
