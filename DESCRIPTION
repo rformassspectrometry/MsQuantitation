@@ -14,9 +14,10 @@ Depends:
 Imports:
    methods,
    BiocGenerics,
-   Biobase,
    S4Vectors,
-   BiocParallel
+   BiocParallel,
+   MsCoreUtils,
+   SummarizedExperiment
 Suggests:
    msdata,
    knitr

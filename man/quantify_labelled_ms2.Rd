@@ -9,7 +9,9 @@ quantify_labelled_ms2(x, reporters, ...)
 \arguments{
 \item{x}{An instance of class \link{Spectra} with MS2 spectra.}
 
-\item{reporters}{An instance of class \code{\link[=ReportersIons]{ReportersIons()}}.}
+\item{reporters}{An instance of class \link{ReporterIons}.}
+
+\item{...}{Additional parameters passed to \code{\link[BiocParallel:bplapply]{BiocParallel::bplapply()}}.}
 }
 \value{
 A instance of class \link{QFeatures} with as many assays as

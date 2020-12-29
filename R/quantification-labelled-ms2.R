@@ -7,6 +7,8 @@
 #' 
 #' @param w `numeric(1)` with the width around the target m/z value.
 #'
+#' @importFrom MsCoreUtils between
+#'
 #' @noRd
 .quantify_peak <- function(mz, x, w) {
     mzs <- x[, "mz"]
@@ -82,12 +84,18 @@ quantifyPeakMatrixList <- function(x, mzs, w = 0.05, ...) {
 
 
 #' @import Spectra
+#'
+#' @importFrom SummarizedExperiment SummarizedExperiment
+#'
+#' @importFrom S4Vectors SimpleList
+#'
+#' @importFrom methods as
 quantify_1_labelled_ms2 <- function(x, reporters, ...) {
     x <- filterMsLevel(x, 2L)
     pks <- peaksData(x)
     ans <- quantifyPeakMatrixList(pks, mz(reporters), w = width(TMT6), ...)
     colnames(ans) <- paste(names(TMT6), round(mz(TMT6), 2), sep = "_")
-    SummarizedExperiment(assay = SimpleList(ans),
+    SummarizedExperiment(assays = SimpleList(ans),
                          rowData = spectraData(x),
                          colData = as(reporters, "DataFrame"))
 }
@@ -101,7 +109,9 @@ quantify_1_labelled_ms2 <- function(x, reporters, ...) {
 #'
 #' @param x An instance of class [Spectra] with MS2 spectra.
 #'
-#' @param reporters An instance of class [ReportersIons()].
+#' @param reporters An instance of class [ReporterIons].
+#'
+#' @param ... Additional parameters passed to [BiocParallel::bplapply()].
 #'
 #' @return A instance of class [QFeatures] with as many assays as
 #'     there where acquisitions in `x`.
