@@ -11,6 +11,12 @@ Description: This package quantifies raw mass spectrometry data
 Depends:
    Spectra,
    QFeatures
+Imports:
+  methods,
+  BiocGenerics,
+  Biobase
+Suggests:
+   knitr
 License: Artistic-2.0
 VignetteBuilder: knitr
 URL: https://github.com/RforMassSpectrometry/MsQuantification
