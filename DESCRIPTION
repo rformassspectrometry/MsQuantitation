@@ -12,11 +12,13 @@ Depends:
    Spectra,
    QFeatures
 Imports:
-  methods,
-  BiocGenerics,
-  Biobase,
-  S4Vectors
+   methods,
+   BiocGenerics,
+   Biobase,
+   S4Vectors,
+   BiocParallel
 Suggests:
+   msdata,
    knitr
 License: Artistic-2.0
 VignetteBuilder: knitr

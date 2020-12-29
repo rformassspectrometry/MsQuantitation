@@ -22,17 +22,17 @@
 #'
 #' @description
 #'
-#' This function will identify the highest peaks in a set of regions
-#' around one or more target m/z (calculated as `mz` +/- `w`) and
-#' return the highest intensities therein. If no peak is identified
-#' in a target region, `NA` is returned for that region.
-#'
+#' The `quantifyPeakMatrix()` and `quantifyPeakMatrixList()` functions
+#' will identify the highest peaks in a set of regions around one or
+#' more target m/z (calculated as `mz` +/- `w`) and return the highest
+#' intensities therein. If no peak is identified in a target region,
+#' `NA` is returned for that region.
 #'
 #' @param x Either a single or a list of peak matrices, each with two
 #'     columns, named `"intensity"` and `"mz"`.
 #' 
 #' @param mzs `numeric()` with the target m/z values to be
-#'     quantified.
+#'     quantified. 
 #' 
 #' @param w `numeric(1)` with the width around the target m/z value.
 #' 
@@ -42,6 +42,8 @@
 #'     dimension `length(x)` by `length(mzs)`.
 #'
 #' @author Laurent Gatto
+#'
+#' @noRd
 #' 
 #' @examples
 #'
@@ -69,9 +71,10 @@
 #' ## Same for a list of peaks matrices
 #' lp <- list(as.matrix(p), as.matrix(p), as.matrix(p))
 #' quantifyPeakMatrixList(lp, c(3, 6, 9), 1)
-quantifyPeakMatrix <- function(x, mzs, w = 0.05) 
+quantifyPeakMatrix <- function(x, mzs, w = 0.05)
     sapply(mzs, .quantify_peak, x, w)
 
+#' @importFrom BiocParallel bplapply
 quantifyPeakMatrixList <- function(x, mzs, w = 0.05, ...) {
     ans <- bplapply(x, quantifyPeakMatrix, mzs, w, ...)
     do.call(rbind, ans)
@@ -108,10 +111,29 @@ quantify_1_labelled_ms2 <- function(x, reporters, ...) {
 #' @import QFeatures
 #'
 #' @author Laurent Gatto
+#'
+#' @examples
+#' ## Test data from the msdata package
+#' f <- msdata::proteomics(pattern = "01.mzML.gz", full.names = TRUE) 
+#' rw <- Spectra(f)
+#'
+#' quantify_labelled_ms2(rw, TMT6)
+#'
+#' ## Simulate data from 2 files
+#' rw <- filterMsLevel(rw, 2L) 
+#' rw <- setBackend(rw, MsBackendDataFrame())
+#' 
+#' rw$dataOrigin <- sample(c("file1", "file2"),
+#'                         length(rw),
+#'                         replace = TRUE)
+#'
+#' quantify_labelled_ms2(rw, TMT6)
 quantify_labelled_ms2 <- function(x, reporters, ...) {
     x <- filterMsLevel(x, 2L)
-    ans <- lapply(split(tmt6, tmt6$dataOrigin),
+    ans <- lapply(split(x, x$dataOrigin),
                   quantify_1_labelled_ms2,
                   reporters, ...)
+    ## don't use the full filenames 
+    names(ans) <- make.unique(basename(names(ans)))
     QFeatures(ans)
 }
