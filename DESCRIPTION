@@ -1,12 +1,12 @@
-Package: MsQuantification
-Title: Mass Spectrometry Quantification 
+Package: MsQuantitation
+Title: Mass Spectrometry Quantitation
 Version: 0.0.1
 Authors@R:
     person("Laurent", "Gatto",
            email = "laurent.gatto@uclouvain.be",
 	   comment = c(ORCID = "0000-0002-1520-2268"),
 	   role = c("aut", "cre"))
-Description: This package quantifies raw mass spectrometry data
+Description: This package quantitates raw mass spectrometry data
    contained in Spectra objects into QFeaures instances.
 Depends:
    Spectra,
