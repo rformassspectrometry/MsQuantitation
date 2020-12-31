@@ -90,8 +90,7 @@ quantifyPeakMatrixList <- function(x, mzs, w = 0.05, ...) {
 #' @importFrom S4Vectors SimpleList
 #'
 #' @importFrom methods as
-quantify_1_labelled_ms2 <- function(x, reporters, ...) {
-    x <- filterMsLevel(x, 2L)
+quantify_1_labelled_ms <- function(x, reporters, ...) {
     pks <- peaksData(x)
     ans <- quantifyPeakMatrixList(pks, mz(reporters), w = width(TMT6), ...)
     colnames(ans) <- paste(names(TMT6), round(mz(TMT6), 2), sep = "_")
@@ -141,7 +140,7 @@ quantify_1_labelled_ms2 <- function(x, reporters, ...) {
 quantify_labelled_ms2 <- function(x, reporters, ...) {
     x <- filterMsLevel(x, 2L)
     ans <- lapply(split(x, x$dataOrigin),
-                  quantify_1_labelled_ms2,
+                  quantify_1_labelled_ms,
                   reporters, ...)
     ## don't use the full filenames 
     names(ans) <- make.unique(basename(names(ans)))
