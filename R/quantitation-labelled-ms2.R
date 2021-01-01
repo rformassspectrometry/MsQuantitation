@@ -90,10 +90,10 @@ quantifyPeakMatrixList <- function(x, mzs, w = 0.05, ...) {
 #' @importFrom S4Vectors SimpleList
 #'
 #' @importFrom methods as
-quantify_1_labelled_ms <- function(x, reporters, ...) {
+quantify_1_labelled_ms2 <- function(x, reporters, ...) {
     pks <- peaksData(x)
-    ans <- quantifyPeakMatrixList(pks, mz(reporters), w = width(TMT6), ...)
-    colnames(ans) <- paste(names(TMT6), round(mz(TMT6), 2), sep = "_")
+    ans <- quantifyPeakMatrixList(pks, mz(reporters), w = width(reporters), ...)
+    colnames(ans) <- paste(names(reporters), round(mz(reporters), 2), sep = "_")
     SummarizedExperiment(assays = SimpleList(ans),
                          rowData = spectraData(x),
                          colData = as(reporters, "DataFrame"))
@@ -140,7 +140,7 @@ quantify_1_labelled_ms <- function(x, reporters, ...) {
 quantify_labelled_ms2 <- function(x, reporters, ...) {
     x <- filterMsLevel(x, 2L)
     ans <- lapply(split(x, x$dataOrigin),
-                  quantify_1_labelled_ms,
+                  quantify_1_labelled_ms2,
                   reporters, ...)
     ## don't use the full filenames 
     names(ans) <- make.unique(basename(names(ans)))
