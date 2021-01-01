@@ -19,8 +19,9 @@ Imports:
    MsCoreUtils,
    SummarizedExperiment
 Suggests:
-   msdata,
-   knitr
+    msdata,
+    knitr,
+    testthat (>= 3.0.0)
 License: Artistic-2.0
 VignetteBuilder: knitr
 URL: https://github.com/RforMassSpectrometry/MsQuantification
@@ -29,3 +30,4 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Config/testthat/edition: 3

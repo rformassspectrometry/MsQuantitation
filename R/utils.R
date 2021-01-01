@@ -81,35 +81,3 @@ quantifyPeakMatrixList <- function(x, mzs, w = 0.05, ...) {
     ans <- bplapply(x, quantifyPeakMatrix, mzs, w, ...)
     do.call(rbind, ans)
 }
-
-##' @param x An instance of class `ReporterIons`.
-##' 
-##' @param sep `character(1)` with a separator used in the name
-##'     creation.
-##' 
-##' @return `character()` of length equal to `length(x)` with unique
-##'     reporter names.
-##' 
-##' @author Laurent Gatto
-##'
-##' @noRd
-##'
-##' @examples
-##'
-##' make_reporter_names(iTRAQ4)
-##' 
-##' make_reporter_names(TMT11)
-##'
-##' make_reporter_names(TMT16)
-make_reporter_names <- function(x, sep = "_") {
-    i <- 0
-    dups <- TRUE
-    while (dups) {
-        nms <- paste(names(x),
-                     round(mz(x), i),
-                     sep = sep)
-        dups <- anyDuplicated(nms)
-        i <- i + 1
-    }
-    nms
-}

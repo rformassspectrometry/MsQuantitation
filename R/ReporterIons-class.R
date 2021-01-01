@@ -83,6 +83,10 @@ setClass("ReporterIons",
              mz = "numeric",
              width = "numeric"))
 
+
+setValidity("ReporterIons",
+            function(object) anyDuplicated(reporterNames(object)) == 0)
+
 #' @export ReporterIons
 #'
 #' @importFrom methods new

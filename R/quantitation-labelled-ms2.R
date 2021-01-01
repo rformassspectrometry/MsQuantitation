@@ -8,7 +8,7 @@
 quantify_1_labelled_ms2 <- function(x, reporters, ...) {
     pks <- peaksData(x)
     ans <- quantifyPeakMatrixList(pks, mz(reporters), w = width(reporters), ...)
-    colnames(ans) <- make_reporter_names(reporters)
+    colnames(ans) <- reporterNames(reporters)
     SummarizedExperiment(assays = SimpleList(ans),
                          rowData = spectraData(x),
                          colData = as(reporters, "DataFrame"))
