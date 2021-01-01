@@ -1,3 +1,17 @@
 test_that("ReporterIons are valid", {
-
+    expect_true(validObject(iTRAQ4))
+    expect_true(validObject(iTRAQ5))
+    expect_true(validObject(iTRAQ8))
+    expect_true(validObject(iTRAQ9))
+    expect_true(validObject(TMT10HCD))
+    expect_true(validObject(TMT10))
+    expect_true(validObject(TMT10ETD))
+    expect_true(validObject(TMT11HCD))
+    expect_true(validObject(TMT11))
+    expect_true(validObject(TMT16HCD))
+    expect_true(validObject(TMT16))
+    expect_true(validObject(TMT6))
+    expect_true(validObject(TMT6b))
+    expect_true(validObject(TMT7))
+    expect_true(validObject(TMT7b))    
 })
