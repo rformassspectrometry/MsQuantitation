@@ -20,7 +20,7 @@
     max(ints)
 }
 
-#' @title Quanifies Peaks in a Peak Matrix
+#' @title Quantifies Peaks in a Peak Matrix
 #'
 #' @description
 #'
