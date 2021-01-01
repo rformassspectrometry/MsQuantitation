@@ -40,6 +40,13 @@ quantify_1_labelled_ms3 <- function(x, reporters, ...) {
 #' @import QFeatures
 #'
 #' @author Laurent Gatto
+#'
+#' @examples
+#'
+#' basename(f <- msdata::proteomics(pattern = "MS3TMT11", full.names = TRUE))
+#' x <- Spectra(f)
+#'
+#' quantify_labelled_ms3(x, TMT11)
 quantify_labelled_ms3 <- function(x, reporters, ...) {
     ## need MS level 3 for quantitation and level 2 for identification
     x <- filterMsLevel(x, 2:3)

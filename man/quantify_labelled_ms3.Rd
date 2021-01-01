@@ -23,6 +23,13 @@ class \code{QFeatures} by quantifying reporter ions of the MS3
 spectra. The assays rowData are pulled from the respective MS2
 precursor scans.
 }
+\examples{
+
+basename(f <- msdata::proteomics(pattern = "MS3TMT11", full.names = TRUE))
+x <- Spectra(f)
+
+quantify_labelled_ms3(x, TMT11)
+}
 \author{
 Laurent Gatto
 }
