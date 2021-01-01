@@ -9,7 +9,7 @@ quantify_1_labelled_ms3 <- function(x, reporters, ...) {
     x3 <- filterMsLevel(x, 3L)
     pks <- peaksData(x3)
     ans <- quantifyPeakMatrixList(pks, mz(reporters), w = width(reporters), ...)
-    colnames(ans) <- paste(names(reporters), round(mz(reporters), 3), sep = "_")    
+    colnames(ans) <- make_reporter_names(reporters)
     i <- match(x3$precScanNum, x$acquisitionNum)
     SummarizedExperiment(assays = SimpleList(ans),
                          rowData = spectraData(x)[i, ],
