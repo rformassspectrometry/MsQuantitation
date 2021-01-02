@@ -14,8 +14,6 @@
     mzs <- x[, "mz"]
     ints <- x[, "intensity"]    
     mz_region <- MsCoreUtils::between(mzs, c(mz - w, mz + w))
-    if (!any(mz_region))
-        return(NA_real_)
     ints <- ints[mz_region]
     max(ints)
 }

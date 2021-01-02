@@ -54,4 +54,15 @@ test_that("ReporterIons() work", {
     expect_identical(reporterNames(ri), paste0("ri", 1:2))
     reporterNames(ri) <- letters[1:2]
     expect_identical(reporterNames(ri), c("a", "b"))
+    expect_error(ri[1:3])
+    expect_error(ReporterIons(name = "test",
+                       reporterNames = paste0("ri", 1:4),
+                       mz = 1:2,
+                       width = 0.01))
+    expect_message(ri <- ReporterIons(name = "test",
+                                      reporterNames = c("ri", "ri"),
+                                      mz = 1:2,
+                                      width = 0.01))
+    expect_identical(reporterNames(ri), c("ri", "ri.1"))
+    expect_error(reporterNames(ri) <- letters[1:3])
 })

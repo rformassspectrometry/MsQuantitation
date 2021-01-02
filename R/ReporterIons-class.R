@@ -106,10 +106,6 @@ ReporterIons <- function(name, reporterNames,
         message("Reporter names must be unique.")
         reporterNames <- make.unique(reporterNames)
     }
-    if (length(mz) != length(reporterNames)) {
-        message("Setting reporter name.")
-        reporterNames <- paste(name, mz, sep = ".")
-    }
     new("ReporterIons",
         name = name,
         reporterNames = reporterNames,
