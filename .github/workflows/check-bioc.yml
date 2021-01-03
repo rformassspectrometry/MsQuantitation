@@ -1,42 +1,10 @@
-## Read more about GitHub actions the features of this GitHub Actions workflow
-## at https://lcolladotor.github.io/biocthis/articles/biocthis.html#use_bioc_github_action
-##
-## For more details, check the biocthis developer notes vignette at
-## https://lcolladotor.github.io/biocthis/articles/biocthis_dev_notes.html
-##
-## You can add this workflow to other packages using:
-## > biocthis::use_bioc_github_action()
-## or
-## > usethis::use_github_action("check-bioc", "https://bit.ly/biocthis_gha", "check-bioc.yml")
-## without having to install biocthis.
-##
-## Using GitHub Actions exposes you to many details about how R packages are
-## compiled and installed in several operating system.s
-### If you need help, please follow the steps listed at
-## https://github.com/r-lib/actions#where-to-find-help
-##
-## If you found an issue specific to biocthis's GHA workflow, please report it
-## with the information that will make it easier for others to help you.
-## Thank you!
-
-
-## Acronyms:
-## * GHA: GitHub Action
-## * OS: operating system
-
-## Specify which branches you want this GHA to run on.
-## Bioconductor uses branches such as master (bioc-devel) and RELEASE_* like
-## RELEASE_3_10. For more details check
-## http://bioconductor.org/developers/how-to/git/
 on:
   push:
     branches:
       - master
-      # - 'RELEASE_*'
   pull_request:
     branches:
       - master
-      # - 'RELEASE_*'
 
 name: R-CMD-check-bioc
 
@@ -209,7 +177,6 @@ jobs:
           remotes::install_cran("rcmdcheck")
           BiocManager::install("BiocCheck")
         shell: Rscript {0}
-
 
       ## See https://github.com/Bioconductor/bioconductor_docker/issues/22
       - name: Manually install preprocessCore
