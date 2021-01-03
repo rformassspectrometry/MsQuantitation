@@ -2,6 +2,8 @@
 % Please edit documentation in R/quantify-methods.R
 \name{quantify,Spectra-method}
 \alias{quantify,Spectra-method}
+\alias{quantify}
+\alias{quantify,Spectra}
 \title{Quantitation of Raw MS Data}
 \usage{
 \S4method{quantify}{Spectra}(object, param, ...)
@@ -11,10 +13,15 @@
 
 \item{param}{An instance of class \code{\link[=QuantParam]{QuantParam()}} that defines the
 quantitation method.}
+
+\item{...}{additional parameters (currently ignored).}
 }
 \value{
 An instance of \code{\link[=QFeatures]{QFeatures()}}.
 }
 \description{
-
+The \code{quantify()} method is the entry point for quantitation of raw
+mass spectrometry data. The raw data is contained in a \code{\link[=Spectra]{Spectra()}}
+object while the details and parameters of the quantitation method
+are defined in a dedicated \code{\link[=QuantParam]{QuantParam()}}.
 }
