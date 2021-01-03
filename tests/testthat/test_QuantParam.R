@@ -13,4 +13,7 @@ test_that("QuantParam() works", {
     expect_error(validObject(QuantParam(msLevel = 1L,
                                         label = TRUE,
                                         param = list(1, 2))))
+    expect_error(QuantParam(msLevel = 0L,
+                            label = TRUE,
+                            param = list(a = 1)))
 })
