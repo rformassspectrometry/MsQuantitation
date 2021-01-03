@@ -81,6 +81,8 @@ setValidity("QuantParam",
 
 #' @importFrom S4Vectors isEmpty
 #'
+#' @param x A instance of class `QuantParam`.
+#' 
 #' @rdname QuantParam
 setMethod("isEmpty", "QuantParam",
           function(x) is.na(x@msLevel) & is.na(x@label) & !length(x@params))

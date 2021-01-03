@@ -12,6 +12,8 @@
 QuantParam(msLevel = NA_integer_, label = NA, params = list())
 }
 \arguments{
+\item{x}{A instance of class \code{QuantParam}.}
+
 \item{msLevel}{\code{integer(1)} indicating the MS levels to be
 quantified. Default is \code{NA}.}
 
