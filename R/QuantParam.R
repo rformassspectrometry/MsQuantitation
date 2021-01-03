@@ -13,17 +13,32 @@
 #' varied, and the exact method to be applied on the raw data is
 #' paramterised by a `QuantParam` instance, i.e. a dedicated class
 #' that stores all the parameters needed to perform a specific
-#' quantitation method. 
+#' quantitation method.
+#'
+#' MS quantitation can be performed at the MS1 or MS2 (and 3)
+#' levels. Additionally, quantitation can be label-free or
+#' labelled. These two states are defined by the `msLevel` (an
+#' integer) and `label` (a logical) parameters.
+#'
+#' Additional details about the quantitation method are defined as a
+#' named list. The example below illustrates how to defined labelled
+#' (`label = TRUE`) MS2 (`msLevel = 2L) quantitation using TMT 10-plex
+#' isobaric tagging (defined by the `TMT10` [ReporterIons()]
+#' instance).
 #'
 #' @author Laurent Gatto
 #'
 #' @examples
 #'
-#' ## The default (empty) parameters
+#' ## default (empty) parameters
 #' QuantParam()
 #'
+#' isEmpty(QuantParam())
+#'
 #' ## MS2 quantitation using TMT10 plex
-#' QuantParam(msLevel = 2L, params = list(reporters = TMT10))
+#' QuantParam(msLevel = 2L,
+#'            label = TRUE,
+#'            params = list(reporters = TMT10))
 NULL
 
 
@@ -36,35 +51,54 @@ NULL
 #' @slot msLevel `integer(1)` indicating the MS level the quantitation
 #'     will be performed on.
 #'
+#' @slot label
+#'
 #' @slot params named `list()` of additional parameters. 
 setClass("QuantParam",
          contains = "Param",
          slots = c(msLevel = "integer",
+                   label = "logical",
                    params = "list"))
 
 setValidity("QuantParam",
             function(object) {
+                if (isEmpty(object))
+                    return(TRUE)
                 msg <- character()
                 if (length(object@params)) {
                     nms <- names(object@params)
                     if (is.null(nms) | any(nms == ""))
                         msg <- c(msg, "All parameters must be named.")
                 }
+                if (is.na(object@msLevel))
+                    msg <- c(msg, "MS level must be defined.")
+                if (is.na(object@label))
+                    msg <- c(msg, "Label must be defined.")                
                 if (length(msg)) msg
                 else TRUE
             })
 
-#' export QuantParam
+
+#' @importFrom S4Vectors isEmpty
 #'
+#' @rdname QuantParam
+setMethod("isEmpty", "QuantParam",
+          function(x) is.na(x@msLevel) & is.na(x@label) & !length(x@params))
+
 #' @importFrom methods new
 #'
 #' @export
 #'
 #' @param msLevel `integer(1)` indicating the MS levels to be
-#'     quantified.
+#'     quantified. Default is `NA`.
+#'
+#' @param label `logical(1)` defining is labelled or label-free
+#'     quantitation. Default is `NA`.
 #' 
 #' @param params `list()` containing additional method-specific
-#'     quantitation parameters.
-QuantParam <- function(msLevel = integer(),
+#'     quantitation parameters. The list must be named.
+QuantParam <- function(msLevel = NA_integer_,
+                       label = NA,
                        params = list())
-    new("QuantParam", msLevel = msLevel, params = params)
+    new("QuantParam",
+        msLevel = msLevel, label = label, params = params)

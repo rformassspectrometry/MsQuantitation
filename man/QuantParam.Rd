@@ -4,16 +4,22 @@
 \name{QuantParam}
 \alias{QuantParam}
 \alias{QuantParam-class}
+\alias{isEmpty,QuantParam-method}
 \title{Quantiation Parameters}
 \usage{
-QuantParam(msLevel = integer(), params = list())
+\S4method{isEmpty}{QuantParam}(x)
+
+QuantParam(msLevel = NA_integer_, label = NA, params = list())
 }
 \arguments{
 \item{msLevel}{\code{integer(1)} indicating the MS levels to be
-quantified.}
+quantified. Default is \code{NA}.}
+
+\item{label}{\code{logical(1)} defining is labelled or label-free
+quantitation. Default is \code{NA}.}
 
 \item{params}{\code{list()} containing additional method-specific
-quantitation parameters.}
+quantitation parameters. The list must be named.}
 }
 \description{
 Quantitation of mass spectrometry data is implemented through the
@@ -24,6 +30,16 @@ varied, and the exact method to be applied on the raw data is
 paramterised by a \code{QuantParam} instance, i.e. a dedicated class
 that stores all the parameters needed to perform a specific
 quantitation method.
+
+MS quantitation can be performed at the MS1 or MS2 (and 3)
+levels. Additionally, quantitation can be label-free or
+labelled. These two states are defined by the \code{msLevel} (an
+integer) and \code{label} (a logical) parameters.
+
+Additional details about the quantitation method are defined as a
+named list. The example below illustrates how to defined labelled
+(\code{label = TRUE}) MS2 (\verb{msLevel = 2L) quantitation using TMT 10-plex isobaric tagging (defined by the }TMT10` \code{\link[=ReporterIons]{ReporterIons()}}
+instance).
 }
 \section{Slots}{
 
@@ -31,16 +47,22 @@ quantitation method.
 \item{\code{msLevel}}{\code{integer(1)} indicating the MS level the quantitation
 will be performed on.}
 
+\item{\code{label}}{}
+
 \item{\code{params}}{named \code{list()} of additional parameters.}
 }}
 
 \examples{
 
-## The default (empty) parameters
+## default (empty) parameters
 QuantParam()
 
+isEmpty(QuantParam())
+
 ## MS2 quantitation using TMT10 plex
-QuantParam(msLevel = 2L, params = list(reporters = TMT10))
+QuantParam(msLevel = 2L,
+           label = TRUE,
+           params = list(reporters = TMT10))
 }
 \author{
 Laurent Gatto
