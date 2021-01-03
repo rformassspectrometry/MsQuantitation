@@ -64,14 +64,22 @@ setValidity("QuantParam",
             function(object) {
                 if (isEmpty(object))
                     return(TRUE)
+                ## Non empty object validity
                 msg <- character()
+                ## params validity (must be a named list)
                 if (length(object@params)) {
                     nms <- names(object@params)
                     if (is.null(nms) | any(nms == ""))
                         msg <- c(msg, "All parameters must be named.")
                 }
-                if (is.na(object@msLevel))
+                ## MS level validity
+                if (is.na(object@msLevel)) {
                     msg <- c(msg, "MS level must be defined.")
+                } else {
+                    if (!object@msLevel %in% 1:3)
+                        msg <- c(msg, "MS level must be 1, 2 or 3.")
+                }
+                ## Label falidity
                 if (is.na(object@label))
                     msg <- c(msg, "Label must be defined.")                
                 if (length(msg)) msg
