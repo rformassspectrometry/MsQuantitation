@@ -120,7 +120,7 @@ ReporterIons <- function(name, reporterNames,
 #' @param object An instance of class `ReporterIons`.
 setMethod("show", "ReporterIons",
           function(object) {
-              cat("Object of class \"", class(object), "\"\n",sep = "")
+              cat("Object of class \"", class(object), "\"\n", sep = "")
               cat(object@name, 
                   "' with ", length(object@mz),
                   " reporter ions\n", sep = "")

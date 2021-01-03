@@ -1,6 +1,6 @@
 Package: MsQuantitation
 Title: Mass Spectrometry Quantitation
-Version: 0.0.1
+Version: 0.0.2
 Authors@R:
     person("Laurent", "Gatto",
            email = "laurent.gatto@uclouvain.be",
@@ -14,6 +14,7 @@ Depends:
 Imports:
    methods,
    BiocGenerics,
+   ProtGenerics,
    S4Vectors,
    BiocParallel,
    MsCoreUtils,
