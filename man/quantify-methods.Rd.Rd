@@ -14,7 +14,8 @@
 \item{param}{An instance of class \code{\link[=QuantParam]{QuantParam()}} that defines the
 quantitation method.}
 
-\item{...}{additional parameters (currently ignored).}
+\item{...}{additional parameters controlled parallel processing of
+the data. See \code{\link[BiocParallel:bplapply]{BiocParallel::bplapply()}} for details.}
 }
 \value{
 An instance of \code{\link[=QFeatures]{QFeatures()}}.
@@ -24,4 +25,44 @@ The \code{quantify()} method is the entry point for quantitation of raw
 mass spectrometry data. The raw data is contained in a \code{\link[=Spectra]{Spectra()}}
 object while the details and parameters of the quantitation method
 are defined in a dedicated \code{\link[=QuantParam]{QuantParam()}}.
+}
+\examples{
+
+## ----------------------------------------
+## Labelled MS2 quantitation
+## ----------------------------------------
+
+## Test data from the msdata package
+f <- msdata::proteomics(pattern = "01.mzML.gz", full.names = TRUE) 
+rw <- Spectra(f)
+
+## Quantitation parameters
+p <- QuantParam(msLevel = 2L, label = TRUE,
+                params = list(reporters = TMT6))
+
+quantify(rw, p)
+
+## Simulate data from 2 files
+rw <- filterMsLevel(rw, 2L) 
+rw <- setBackend(rw, MsBackendDataFrame())
+
+rw$dataOrigin <- sample(c("file1", "file2"),
+                        length(rw),
+                        replace = TRUE)
+
+quantify(rw, p)
+
+## ----------------------------------------
+## Labelled MS3 quantitation
+## ----------------------------------------
+
+## Test data from the msdata pakage
+basename(f <- msdata::proteomics(pattern = "MS3TMT11", full.names = TRUE))
+x <- Spectra(f)
+
+## Quantitation parameters
+p <- QuantParam(msLevel = 3L, label = TRUE,
+                params = list(reporters = TMT11))
+
+quantify(x, p)
 }

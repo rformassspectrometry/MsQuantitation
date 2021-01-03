@@ -35,8 +35,6 @@ quantify_1_labelled_ms3 <- function(x, reporters, ...) {
 #' @return A instance of class [QFeatures] with as many assays as
 #'     there where acquisitions in `x`.
 #'
-#' @export
-#'
 #' @import QFeatures
 #'
 #' @author Laurent Gatto
