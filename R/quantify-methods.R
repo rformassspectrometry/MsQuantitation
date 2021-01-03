@@ -23,5 +23,16 @@
 #' @importFrom ProtGenerics quantify
 setMethod("quantify", "Spectra",
           function(object, param, ...) {
-              TRUE
+              if (missing(param) | isEmpty(param)) 
+                  stop("Please provide a quantitation parameters.")
+              if (param@msLevel == 1) {
+                  stop("MS1 quantitation not available.")
+              } else { ## MS level > 1
+                  if (param@label) {
+                      TRUE
+                  } else {
+                      stop("Label-free MS2 quantitation not available.")
+                  }
+              }
+
           })
