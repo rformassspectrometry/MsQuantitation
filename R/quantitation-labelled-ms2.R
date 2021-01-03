@@ -5,6 +5,8 @@
 #' @importFrom S4Vectors SimpleList
 #'
 #' @importFrom methods as
+#'
+#' @noRd
 quantify_1_labelled_ms2 <- function(x, reporters, ...) {
     pks <- peaksData(x)
     ans <- quantifyPeakMatrixList(pks, mz(reporters), w = width(reporters), ...)
@@ -33,23 +35,6 @@ quantify_1_labelled_ms2 <- function(x, reporters, ...) {
 #' @import QFeatures
 #'
 #' @author Laurent Gatto
-#'
-#' @examples
-#' ## Test data from the msdata package
-#' f <- msdata::proteomics(pattern = "01.mzML.gz", full.names = TRUE) 
-#' rw <- Spectra(f)
-#'
-#' quantify_labelled_ms2(rw, TMT6)
-#'
-#' ## Simulate data from 2 files
-#' rw <- filterMsLevel(rw, 2L) 
-#' rw <- setBackend(rw, MsBackendDataFrame())
-#' 
-#' rw$dataOrigin <- sample(c("file1", "file2"),
-#'                         length(rw),
-#'                         replace = TRUE)
-#'
-#' quantify_labelled_ms2(rw, TMT6)
 quantify_labelled_ms2 <- function(x, reporters, ...) {
     x <- filterMsLevel(x, 2L)
     ans <- lapply(split(x, x$dataOrigin),

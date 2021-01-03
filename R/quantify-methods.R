@@ -19,7 +19,8 @@
 #' @param ... additional parameters controlled parallel processing of
 #'     the data. See [BiocParallel::bplapply()] for details.
 #' 
-#' @return An instance of [QFeatures()].
+#' @return An instance of [QFeatures()] with as many assays as there
+#'     where acquisitions (files) in `object`.
 #' 
 #' @importFrom ProtGenerics quantify
 #'

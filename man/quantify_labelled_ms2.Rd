@@ -21,23 +21,6 @@ there where acquisitions in \code{x}.
 Function that converses a \code{Spectra} instance into an object of
 class \code{QFeatures} by quantifying reporter ions of the MS2 spectra.
 }
-\examples{
-## Test data from the msdata package
-f <- msdata::proteomics(pattern = "01.mzML.gz", full.names = TRUE) 
-rw <- Spectra(f)
-
-quantify_labelled_ms2(rw, TMT6)
-
-## Simulate data from 2 files
-rw <- filterMsLevel(rw, 2L) 
-rw <- setBackend(rw, MsBackendDataFrame())
-
-rw$dataOrigin <- sample(c("file1", "file2"),
-                        length(rw),
-                        replace = TRUE)
-
-quantify_labelled_ms2(rw, TMT6)
-}
 \author{
 Laurent Gatto
 }

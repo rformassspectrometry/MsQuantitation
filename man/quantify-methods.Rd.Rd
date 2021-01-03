@@ -18,7 +18,8 @@ quantitation method.}
 the data. See \code{\link[BiocParallel:bplapply]{BiocParallel::bplapply()}} for details.}
 }
 \value{
-An instance of \code{\link[=QFeatures]{QFeatures()}}.
+An instance of \code{\link[=QFeatures]{QFeatures()}} with as many assays as there
+where acquisitions (files) in \code{object}.
 }
 \description{
 The \code{quantify()} method is the entry point for quantitation of raw
