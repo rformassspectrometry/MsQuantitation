@@ -37,6 +37,7 @@
 #' ## Quantitation parameters
 #' p <- QuantParam(msLevel = 2L, label = TRUE,
 #'                 params = list(reporters = TMT6))
+#' p
 #' 
 #' quantify(rw, p)
 #'
@@ -61,6 +62,7 @@
 #' ## Quantitation parameters
 #' p <- QuantParam(msLevel = 3L, label = TRUE,
 #'                 params = list(reporters = TMT11))
+#' p
 #'
 #' quantify(x, p)
 setMethod("quantify", "Spectra",
