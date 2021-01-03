@@ -23,28 +23,23 @@
 #'
 #' @param reporters A `ReporterIons` object.
 #'
-#' @param acquistionNum `character(1)` rowData column name defining all scan
-#'     acquisition numbers. Default is `"acquistionNum"`.
+#' @param acquisitionNum `character(1)` rowData column name defining all scan
+#'     acquisition numbers. 
 #'
 #' @param precScanNum `character(1)` rowData column name defining the
-#'     precursor scan acquisition numbers . Default is
-#'     `"precScanNum"`.
+#'     precursor scan acquisition numbers.
 #'
 #' @param ... Additional parameters passed to
 #'     [BiocParallel::bplally()].
 #'
 #' @noRd
-quantify_1_labelled_ms3 <- function(x, reporters,
-                                    acquistionNum = "acquisitionNum",
-                                    precScanNum = "precScanNum",
-                                    ...) {
-    stopifnot(length(acquisitionNum) == 1)
-    stopifnot(length(precScanNum) == 1)
+quantify_1_labelled_ms3 <- function(x, reporters, acquisitionNum,
+                                    precScanNum, ...) {
     x3 <- filterMsLevel(x, 3L)
     pks <- peaksData(x3)
     ans <- quantifyPeakMatrixList(pks, mz(reporters), w = width(reporters), ...)
     colnames(ans) <- reporterNames(reporters)
-    i <- match(x3[[precScanNum]], x[[acquistionNum]])
+    i <- match(x3[[precScanNum]], x[[acquisitionNum]])
     SummarizedExperiment(assays = SimpleList(ans),
                          rowData = spectraData(x)[i, ],
                          colData = as(reporters, "DataFrame"))
