@@ -38,3 +38,18 @@ test_that("quantify_labelled_ms*() works", {
                      DataFrame(row.names = reporterNames(TMT10)))
     expect_identical(colData(q2), colData(q3))
 })
+
+
+test_that("quantify,Spectra work", {
+    p2 <- QuantParam(msLevel = 2L, label = TRUE,
+                     params = list(reporters = TMT10))
+    p3 <- QuantParam(msLevel = 2L, label = TRUE,
+                     params = list(reporters = TMT10))
+    res2 <- quantify(spd, p2)
+    res3 <- quantify(spd, p3)
+
+    q2 <- MsQuantitation:::quantify_labelled_ms2(spd, TMT10)
+    expect_identical(q2, res2)
+    q3 <- MsQuantitation:::quantify_labelled_ms3(spd, TMT10)
+    expect_identical(q3, res3)
+})
