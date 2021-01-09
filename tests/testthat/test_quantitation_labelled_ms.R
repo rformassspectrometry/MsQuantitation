@@ -19,8 +19,9 @@ m <- matrix(c(1:10, 10:1, seq(10, 100, length.out = 10)),
 colnames(m)  <- reporterNames(TMT10)
 
 test_that("quantify_labelled_ms*() works", {
-    q2 <- quantify_labelled_ms2(spd, TMT10)
-    q3 <- quantify_labelled_ms3(spd, TMT10, "acquisitionNum", "precScanNum")
+    q2 <- MsQuantitation:::quantify_labelled_ms2(spd, TMT10)
+    q3 <- MsQuantitation:::quantify_labelled_ms3(spd, TMT10,
+                                                 "acquisitionNum", "precScanNum")
     ## check assay
     expect_identical(assay(q2[[1]]), m)
     expect_identical(assay(q2[[1]]), assay(q3[[1]]))
@@ -43,13 +44,15 @@ test_that("quantify_labelled_ms*() works", {
 test_that("quantify,Spectra work", {
     p2 <- QuantParam(msLevel = 2L, label = TRUE,
                      params = list(reporters = TMT10))
-    p3 <- QuantParam(msLevel = 2L, label = TRUE,
-                     params = list(reporters = TMT10))
     res2 <- quantify(spd, p2)
+
+    p3 <- QuantParam(msLevel = 3L, label = TRUE,
+                     params = list(reporters = TMT10))
     res3 <- quantify(spd, p3)
 
     q2 <- MsQuantitation:::quantify_labelled_ms2(spd, TMT10)
     expect_identical(q2, res2)
-    q3 <- MsQuantitation:::quantify_labelled_ms3(spd, TMT10)
+    q3 <- MsQuantitation:::quantify_labelled_ms3(spd, TMT10,
+                                                 "acquisitionNum", "precScanNum")
     expect_identical(q3, res3)
 })
