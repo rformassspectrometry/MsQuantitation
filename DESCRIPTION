@@ -21,6 +21,7 @@ Imports:
    SummarizedExperiment
 Suggests:
     msdata,
+    mzR,
     knitr,
     testthat (>= 3.0.0)
 License: Artistic-2.0

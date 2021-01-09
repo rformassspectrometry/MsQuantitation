@@ -21,10 +21,30 @@
 #' integer) and `label` (a logical) parameters.
 #'
 #' Additional details about the quantitation method are defined as a
-#' named list. The example below illustrates how to defined labelled
-#' (`label = TRUE`) MS2 (`msLevel = 2L) quantitation using TMT 10-plex
-#' isobaric tagging (defined by the `TMT10` [ReporterIons()]
-#' instance).
+#' named list, as described in the 'Details' section. The example
+#' below illustrates how to defined labelled (`label = TRUE`) MS2
+#' (`msLevel = 2L) quantitation using TMT 10-plex isobaric tagging
+#' (defined by the `TMT10` [ReporterIons()] instance).
+#'
+#' @details
+#' 
+#' Labelled MS2 Quantitation:
+#'
+#' - The `params` need only to contain a single mandatory element, a
+#'   [ReporterIons()] instance, named `reporters`.
+#'
+#' Labelled MS3 Quantitation:
+#'
+#' - The `params` need to contain a mandatory element, a
+#'   [ReporterIons()] instance, named `reporters`.
+#'
+#' - Two optional character strings, named `acquisitionNum` and
+#'   `precScanNum`, containing the respective column names of the
+#'   acquition number and precursor scan acquisition numbers in the
+#'   raw data to be quantified. The default values are
+#'   `"acquisitionNum"` and `"precScanNum"` respectively, which match
+#'   the names in standard `Spectra` objects.
+#' 
 #'
 #' @author Laurent Gatto
 #'
@@ -39,6 +59,13 @@
 #' QuantParam(msLevel = 2L,
 #'            label = TRUE,
 #'            params = list(reporters = TMT10))
+#'
+#' ## MS3 quantitation using TMT16 plex and non-standard acquisition
+#' ## number and precursor scan acqusition number
+#' QuantParam(msLevel = 2L, label = TRUE,
+#'            params = list(reporters = TMT10,
+#'                          acqusitionNum = "aquisition_number",
+#'                          preScanNum = "prec_scan_number"))
 NULL
 
 

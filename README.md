@@ -47,3 +47,4 @@ state explicitly that they are interchangeable.
 
 Based on the above, the name of this package was chosen to officially
 be `MsQuantitation`, but it could just has been `MsQuantification`.
+

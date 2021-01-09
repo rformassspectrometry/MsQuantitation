@@ -20,7 +20,7 @@ colnames(m)  <- reporterNames(TMT10)
 
 test_that("quantify_labelled_ms*() works", {
     q2 <- quantify_labelled_ms2(spd, TMT10)
-    q3 <- quantify_labelled_ms3(spd, TMT10)
+    q3 <- quantify_labelled_ms3(spd, TMT10, "acquisitionNum", "precScanNum")
     ## check assay
     expect_identical(assay(q2[[1]]), m)
     expect_identical(assay(q2[[1]]), assay(q3[[1]]))

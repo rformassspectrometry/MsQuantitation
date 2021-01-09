@@ -76,12 +76,20 @@ setMethod("quantify", "Spectra",
               } else { ## MS level 2 or 3
                   if (param@label) {
                       reporters <- param@params[["reporters"]]
-                      if (is.null(reporters))
+                      if (is.null(reporters)) 
                           stop("Reporters must be defined for labelled MS2/3 quantitation.")
-                      if (param@msLevel == 2L) 
+                      if (param@msLevel == 2L) {
                           quantify_labelled_ms2(object, reporters = reporters, ...)
-                      else ## MS3
-                          quantify_labelled_ms3(object, reporters = reporters, ...)
+                      } else { ## MS3
+                          acquisitionNum <- param@params[["acquisitionNum"]]
+                          if (is.null(acquisitionNum)) acquisitionNum <- "acquisitionNum"
+                          precScanNum <- param@params[["precScanNum"]]
+                          if (is.null(precScanNum)) precScanNum <- "precScanNum"
+                          quantify_labelled_ms3(object, reporters = reporters,
+                                                acquisitionNum = acquisitionNum,
+                                                precScanNum = precScanNum,
+                                                ...)
+                      }
 
                   } else {
                       stop("Label-free MS2 quantitation not available.")
