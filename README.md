@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/rformassspectrometry/MsQuantitation/branch/main/graph/badge.svg?token=R12NIC9611)](https://codecov.io/gh/rformassspectrometry/MsQuantitation)
+
 # Quantitation of Mass Spectrometry Data
 
 The `MsQuantitation` package quantitates raw mass spectrometry data
