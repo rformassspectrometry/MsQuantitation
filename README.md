@@ -8,7 +8,6 @@ extracted from
 into [`QFeatures`](https://rformassspectrometry.github.io/QFeatures/)
 instances.
 
-
 ## Quantitation or quantification?
 
 The two words are mostly synonyms, although quantification/quantify is
@@ -50,3 +49,6 @@ state explicitly that they are interchangeable.
 Based on the above, the name of this package was chosen to officially
 be `MsQuantitation`, but it could just has been `MsQuantification`.
 
+## Contributions
+
+Please the *R for Mass Spectrometry* [code of conduct](https://rformassspectrometry.github.io/RforMassSpectrometry/articles/RforMassSpectrometry.html#code-of-conduct) and [contribution guidelines](https://rformassspectrometry.github.io/RforMassSpectrometry/articles/RforMassSpectrometry.html#contributions).
